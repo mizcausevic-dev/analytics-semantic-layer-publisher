@@ -1,70 +1,40 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to this project are documented here.
-
-This log is intentionally written as an engineering record rather than a launch theater timeline. Dates reflect when the concept, design, prototype, and public packaging phases were mature enough to document.
 
 ## [1.0.0] - 2026-05-12
 
 ### Released
-- Published **analytics-semantic-layer-publisher** as a public, portfolio-grade answer-engine visibility system.
-- Packaged the current implementation, documentation, validation workflow, and proof surfaces into a repo that could be reviewed by engineering, product, and operating stakeholders.
-- Tightened the repo story around the real-world operating problem: answer-engine visibility gaps, weak semantic packaging, and inconsistent structured-data coverage.
+- Published **analytics-semantic-layer-publisher** as the semantic publishing artifact in the marketing and analytics cluster.
+- Packaged metric definitions, ownership, formula logic, JSON-LD publishing, and catalog views into one public repo.
+- Positioned the project around metric explainability for both humans and AI systems.
 
 ### Why this mattered
-- Existing approaches in SEO crawlers, analytics dashboards, and structured-data validators were useful for adjacent workflows.
-- They still missed the core need: a way to connect web hygiene with citation readiness, semantic packaging, and answer-engine discoverability.
-- This release made the repo readable as an operational capability rather than a narrow technical demo.
+- Many organizations have semantic definitions, but they remain trapped inside BI tooling or dbt project files.
+- AI systems and even internal stakeholders often ask the same question: what does this metric actually mean here?
+- This release made the repo useful to analytics engineering, BI, and AEO-minded teams.
 
-## [0.1.0] - 2026-03-16
+## [0.1.0] - 2026-02-03
 
 ### Shipped
-- Cut the first coherent internal version of the product shape behind **analytics-semantic-layer-publisher**.
-- Standardized the core objects, decision surfaces, and operator outputs around the repo's main working problem.
-- Established the first reviewable version of the architecture described as: Python publisher for dbt-style semantic layers, JSON-LD metric contracts, and AI-queryable analytics definitions.
+- Locked the first internal pipeline for reading semantic definitions and publishing them as structured artifacts.
+- Added the first catalog views that made measures, owners, and formulas easier to inspect.
 
-### Notes
-- This milestone was less about polish and more about proving the operating model.
-- The emphasis was on turning a messy domain problem into something a real team could reason about in CI, review, or day-to-day operations.
-
-## [Prototype] - 2025-07-12
+## [Prototype] - 2025-05-18
 
 ### Built
-- Created the first runnable prototype for the repo's core workflow and decision model.
-- Started validating the design against real operating pressures instead of idealized sample flows.
-- Added enough shape to test whether the project could surface action, not just information.
+- Built the earliest prototype around exporting metric definitions into machine-readable and human-readable forms.
+- Tested whether structured publication could reduce ambiguity around shared business measures.
 
-### Problem pressure
-- The prototype phase was shaped by concrete issues such as answer-engine discoverability gaps, thin structured data, and inconsistent entity linking.
-- This was the point where the project moved from a sketch into something worth hardening.
-
-## [Design Phase] - 2024-10-09
+## [Design Phase] - 2024-02-07
 
 ### Designed
-- Defined the core philosophy for the system:
-  - operator-first
-  - decision-legible
-  - CI- and review-friendly
-  - suitable for mixed technical and business audiences
-- Chose outputs that would make the repo useful to real operators instead of just visually impressive.
-- Focused the design on explainability, evidence, and next-best action rather than passive reporting.
+- Chose a semantic publishing framing instead of another internal metrics UI.
+- Treated measure definition and ownership as public interfaces, not hidden model details.
+- Kept the design aligned with both BI consumers and answer-engine use cases.
 
-### Rejected approaches
-- Avoided turning the repo into a generic dashboard or CRUD exercise.
-- Avoided thin wrapper patterns that would hide the actual operating problem behind fashionable tooling choices.
-
-## [Idea Origin] - 2024-03-09
+## [Idea Origin] - 2023-03-25
 
 ### Observed
-- The initial idea surfaced while looking at how teams were handling answer-engine visibility gaps, weak semantic packaging, and inconsistent structured-data coverage.
-- The recurring pattern was that people could often see fragments of the problem, but not the whole operational story in one place.
-
-### Insight
-- The missing product was not another point solution. It was a clearer operating layer that made the work legible to growth, search, and content operations teams.
-- That insight became the basis for **analytics-semantic-layer-publisher**.
-
-## [Background Signals] - 2022-08-09
-
-### Context
-- Earlier platform, governance, and operator-tooling work made one pattern obvious: the dangerous systems are rarely the ones with no controls at all. They are the ones where controls exist, but are fragmented, weakly owned, and hard to read under pressure.
-- That pattern shaped this project long before the public repo existed.
+- The idea came from a common analytics problem: teams reuse the same metric names while meaning slightly different things.
+- The missing artifact was a way to publish a semantic layer so definitions could travel with the metric.
