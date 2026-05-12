@@ -1,0 +1,144 @@
+catalog:
+  name: Northstar Analytics Semantic Layer
+  description: >
+    A semantic metric catalog for revenue, pipeline, lifecycle, and efficiency
+    definitions published in AI-readable JSON-LD and human-readable HTML.
+  owner: Revenue Intelligence
+  domain: Analytics Engineering
+  publication_url: http://127.0.0.1:4604
+  tags:
+    - analytics
+    - semantic-layer
+    - revops
+    - aeo
+    - json-ld
+
+semantic_models:
+  - name: acquisition_funnel
+    label: Acquisition Funnel
+    description: Maps paid spend and conversion events into acquisition efficiency metrics.
+    primary_entity: account
+    grain: account-day-channel
+    owners:
+      - Growth Systems
+      - Revenue Strategy
+    dimensions:
+      - name: channel
+        description: Paid, organic, partner, direct, and lifecycle acquisition lanes.
+      - name: region
+        description: Commercial region used for board and operator cut views.
+      - name: period
+        description: Fiscal day and quarter rollups.
+    measures:
+      - name: spend
+        label: Paid Spend
+        agg: sum
+        unit: usd
+      - name: acquired_accounts
+        label: Acquired Accounts
+        agg: sum
+        unit: accounts
+      - name: qualified_pipeline
+        label: Qualified Pipeline
+        agg: sum
+        unit: usd
+
+  - name: product_adoption
+    label: Product Adoption
+    description: Tracks expansion readiness and value realization after activation.
+    primary_entity: workspace
+    grain: workspace-week
+    owners:
+      - Product Analytics
+      - Customer Success
+    dimensions:
+      - name: plan_tier
+        description: Commercial plan family used for adoption comparisons.
+      - name: lifecycle_stage
+        description: New, growth, expansion, and recovery stages.
+      - name: segment
+        description: SMB, mid-market, enterprise segmentation lane.
+    measures:
+      - name: active_workspaces
+        label: Active Workspaces
+        agg: sum
+        unit: workspaces
+      - name: expansion_pipeline
+        label: Expansion Pipeline
+        agg: sum
+        unit: usd
+      - name: net_revenue_retention
+        label: Net Revenue Retention
+        agg: avg
+        unit: pct
+
+metrics:
+  - name: customer_acquisition_cost
+    label: Customer Acquisition Cost
+    type: ratio
+    semantic_model: acquisition_funnel
+    description: Average spend required to acquire a new paying account.
+    formula: spend / acquired_accounts
+    owner: Revenue Strategy
+    service_tier: board
+    tags:
+      - cac
+      - efficiency
+      - finance
+    dimensions:
+      - channel
+      - region
+      - period
+    dependencies:
+      - spend
+      - acquired_accounts
+    ai_questions:
+      - What is CAC by channel this quarter?
+      - Which region has the most efficient paid acquisition?
+
+  - name: pipeline_per_dollar
+    label: Pipeline per Dollar
+    type: ratio
+    semantic_model: acquisition_funnel
+    description: Qualified pipeline generated for every paid marketing dollar.
+    formula: qualified_pipeline / spend
+    owner: Growth Systems
+    service_tier: operator
+    tags:
+      - pipeline
+      - demand-gen
+      - efficiency
+    dimensions:
+      - channel
+      - region
+      - period
+    dependencies:
+      - qualified_pipeline
+      - spend
+    ai_questions:
+      - Which channels are producing the most pipeline per dollar?
+      - How did pipeline efficiency change versus last quarter?
+
+  - name: expansion_readiness_score
+    label: Expansion Readiness Score
+    type: composite
+    semantic_model: product_adoption
+    description: Composite signal for whether accounts are ready for expansion outreach.
+    formula: weighted(active_workspaces, expansion_pipeline, net_revenue_retention)
+    owner: Customer Success
+    service_tier: operator
+    tags:
+      - expansion
+      - adoption
+      - health
+    dimensions:
+      - plan_tier
+      - lifecycle_stage
+      - segment
+    dependencies:
+      - active_workspaces
+      - expansion_pipeline
+      - net_revenue_retention
+    ai_questions:
+      - Which lifecycle stage has the strongest expansion readiness?
+      - Where is expansion pipeline lagging healthy product usage?

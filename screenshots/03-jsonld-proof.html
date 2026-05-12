@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analytics Semantic Layer Publisher - Evidence</title>
+  <style>
+    :root {
+      --bg: #07111d;
+      --panel: #0d1a2b;
+      --panel-2: #12233a;
+      --line: #1d3655;
+      --text: #eef2ff;
+      --muted: #98a7c2;
+      --accent: #68b7ff;
+      --accent-2: #f0d7a1;
+      --green: #6ce1b1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Inter, sans-serif;
+      background: linear-gradient(180deg, #07111d 0%, #091827 100%);
+      color: var(--text);
+    }
+    .page {
+      width: 1440px;
+      margin: 0 auto;
+      padding: 48px 52px 64px;
+      background:
+        radial-gradient(circle at top right, rgba(104,183,255,0.16), transparent 28%),
+        linear-gradient(180deg, rgba(11,25,41,0.95), rgba(6,14,24,0.98));
+      min-height: 920px;
+    }
+    .frame {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 28px 32px 36px;
+      background: rgba(11, 22, 37, 0.88);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 15px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0;
+      font-size: 68px;
+      line-height: 0.96;
+      color: #f4f1e3;
+      font-family: Georgia, "Times New Roman", serif;
+      max-width: 1100px;
+    }
+    .lede {
+      margin-top: 18px;
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .pill-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: #1a2f4d;
+      border: 1px solid #29486e;
+      color: #f5f8ff;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .stat {
+      padding: 22px 22px 18px;
+      border-radius: 24px;
+      background: #12233a;
+      border: 1px solid #25415f;
+      min-height: 162px;
+    }
+    .stat .label {
+      color: #a8b6cd;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .stat .value {
+      color: #f4f1e3;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 52px;
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+    .stat .copy {
+      color: #c1cadc;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .section {
+      margin-top: 34px;
+      border-radius: 28px;
+      border: 1px solid #203654;
+      background: #0d1524;
+      padding: 28px;
+    }
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      border-radius: 22px;
+      border: 1px solid #263d5f;
+      background: #131e32;
+      padding: 22px;
+      min-height: 240px;
+    }
+    .card .kicker {
+      color: var(--accent);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .card h2 {
+      font-size: 24px;
+      line-height: 1.15;
+      margin: 0 0 14px;
+      color: #f4f1e3;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .card p, .card li {
+      color: #bdc7d9;
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .card ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #d7f7da;
+      font-size: 15px;
+      line-height: 1.45;
+      font-family: Consolas, "SFMono-Regular", monospace;
+    }
+    .json {
+      background: #07101b;
+      border: 1px solid #284462;
+      border-radius: 22px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .footer-note {
+      margin-top: 24px;
+      color: #8fa5c3;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+      <div class="eyebrow">json-ld proof</div>
+      
+      <h1>JSON-LD proof that gives AI systems a citation-ready definition layer.</h1>
+      <p class="lede">
+        The publisher emits schema.org DataCatalog and DefinedTerm records so AI
+        systems can resolve metric names, formulas, dependencies, and ownership
+        before they generate answers, summaries, or decision support.
+      </p>
+      <div class="section-grid">
+        <div class="card">
+          <div class="kicker">catalog export</div>
+          <h2>Whole semantic layer published as a DataCatalog.</h2>
+          <p>Datasets, dimensions, measures, and metric definitions roll up into a single machine-readable knowledge surface.</p>
+        </div>
+        <div class="card">
+          <div class="kicker">metric contract</div>
+          <h2>Each KPI can stand alone as a DefinedTerm.</h2>
+          <p>That makes terms like CAC, NRR, and Pipeline per Dollar directly referencable by copilots and search systems.</p>
+        </div>
+        <div class="card">
+          <div class="kicker">operator impact</div>
+          <h2>Follow-up questions route back to the right team.</h2>
+          <p>Ownership is embedded alongside formulas and dependencies, which reduces answer drift and ambiguous metric debates.</p>
+        </div>
+      </div>
+      <div class="json"><pre>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;DataCatalog&quot;,
+  &quot;name&quot;: &quot;Northstar Analytics Semantic Layer&quot;,
+  &quot;description&quot;: &quot;A semantic metric catalog for revenue, pipeline, lifecycle, and efficiency definitions published in AI-readable JSON-LD and human-readable HTML.\n&quot;,
+  &quot;keywords&quot;: [
+    &quot;analytics&quot;,
+    &quot;semantic-layer&quot;,
+    &quot;revops&quot;,
+    &quot;aeo&quot;,
+    &quot;json-ld&quot;
+  ],
+  &quot;creator&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Revenue Intelligence&quot;
+  },
+  &quot;dataset&quot;: [
+    {
+      &quot;@type&quot;: &quot;Dataset&quot;,
+      &quot;name&quot;: &quot;Acquisition Funnel&quot;,
+      &quot;identifier&quot;: &quot;acquisition_funnel&quot;,
+      &quot;description&quot;: &quot;Maps paid spend and conversion events into acquisition efficiency metrics.&quot;,
+      &quot;keywords&quot;: [
+        &quot;account&quot;,
+        &quot;account-day-channel&quot;
+      ],
+      &quot;measurementTechnique&quot;: [
+        &quot;Paid Spend&quot;,
+        &quot;Acquired Accounts&quot;,
+        &quot;Qualified Pipeline&quot;
+      ],
+      &quot;variableMeasured&quot;: [
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;channel&quot;,
+          &quot;description&quot;: &quot;Paid, organic, partner, direct, and lifecycle acquisition lanes.&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;region&quot;,
+          &quot;description&quot;: &quot;Commercial region used for board and operator cut views.&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;period&quot;,
+          &quot;description&quot;: &quot;Fiscal day and quarter rollups.&quot;
+        }
+      ]
+    },
+    {
+      &quot;@type&quot;: &quot;Dataset&quot;,
+      &quot;name&quot;: &quot;Product Adoption&quot;,
+      &quot;identifier&quot;: &quot;product_adoption&quot;,
+      &quot;description&quot;: &quot;Tracks expansion readiness and value realization after activation.&quot;,
+      &quot;keywords&quot;: [
+        &quot;workspace&quot;,
+        &quot;workspace-week&quot;
+      ],
+      &quot;measurementTechnique&quot;: [
+        &quot;Active Workspaces&quot;,
+        &quot;Expansion Pipeline&quot;,
+        &quot;Net Revenue Retention&quot;
+      ],
+      &quot;variableMeasured&quot;: [
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;plan_tier&quot;,
+          &quot;description&quot;: &quot;Commercial plan family used for adoption comparisons.&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;lifecycle_stage&quot;,
+          &quot;description&quot;: &quot;New, growth, expansion, and recovery stages.&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;segment&quot;,
+          &quot;description&quot;: &quot;SMB, mid-market, enterprise segmentation lane.&quot;
+        }
+      ]
+    }
+  ],
+  &quot;hasPart&quot;: [
+    {
+      &quot;@context&quot;: &quot;https://schema.org&quot;,
+      &quot;@type&quot;: &quot;DefinedTerm&quot;,
+      &quot;name&quot;: &quot;Customer Acquisition Cost&quot;,
+      &quot;termCode&quot;: &quot;customer_acquisition_cost&quot;,
+      &quot;description&quot;: &quot;Average spend required to acquire a new paying account.&quot;,
+      &quot;alternateName&quot;: &quot;spend / acquired_accounts&quot;,
+      &quot;inDefinedTermSet&quot;: &quot;http://127.0.0.1:4604/semantic/catalog.jsonld&quot;,
+      &quot;keywords&quot;: [
+        &quot;cac&quot;,
+        &quot;efficiency&quot;,
+        &quot;finance&quot;
+      ],
+      &quot;measurementTechnique&quot;: &quot;spend / acquired_accounts&quot;,
+      &quot;maintainer&quot;: {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;name&quot;: &quot;Revenue Strategy&quot;
+      },
+      &quot;variableMeasured&quot;: [
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;spend&quot;,
+          &quot;description&quot;: &quot;Dependency required for Customer Acquisition Cost&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;acquired_accounts&quot;,
+          &quot;description&quot;: &quot;Dependency required for Customer Acquisition Cost&quot;
+        }
+      ]
+    },
+    {
+      &quot;@context&quot;: &quot;https://schema.org&quot;,
+      &quot;@type&quot;: &quot;DefinedTerm&quot;,
+      &quot;name&quot;: &quot;Pipeline per Dollar&quot;,
+      &quot;termCode&quot;: &quot;pipeline_per_dollar&quot;,
+      &quot;description&quot;: &quot;Qualified pipeline generated for every paid marketing dollar.&quot;,
+      &quot;alternateName&quot;: &quot;qualified_pipeline / spend&quot;,
+      &quot;inDefinedTermSet&quot;: &quot;http://127.0.0.1:4604/semantic/catalog.jsonld&quot;,
+      &quot;keywords&quot;: [
+        &quot;pipeline&quot;,
+        &quot;demand-gen&quot;,
+        &quot;efficiency&quot;
+      ],
+      &quot;measurementTechnique&quot;: &quot;qualified_pipeline / spend&quot;,
+      &quot;maintainer&quot;: {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;name&quot;: &quot;Growth Systems&quot;
+      },
+      &quot;variableMeasured&quot;: [
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;qualified_pipeline&quot;,
+          &quot;description&quot;: &quot;Dependency required for Pipeline per Dollar&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;spend&quot;,
+          &quot;description&quot;: &quot;Dependency required for Pipeline per Dollar&quot;
+        }
+      ]
+    },
+    {
+      &quot;@context&quot;: &quot;https://schema.org&quot;,
+      &quot;@type&quot;: &quot;DefinedTerm&quot;,
+      &quot;name&quot;: &quot;Expansion Readiness Score&quot;,
+      &quot;termCode&quot;: &quot;expansion_readiness_score&quot;,
+      &quot;description&quot;: &quot;Composite signal for whether accounts are ready for expansion outreach.&quot;,
+      &quot;alternateName&quot;: &quot;weighted(active_workspaces, expansion_pipeline, net_revenue_retention)&quot;,
+      &quot;inDefinedTermSet&quot;: &quot;http://127.0.0.1:4604/semantic/catalog.jsonld&quot;,
+      &quot;keywords&quot;: [
+        &quot;expansion&quot;,
+        &quot;adoption&quot;,
+        &quot;health&quot;
+      ],
+      &quot;measurementTechnique&quot;: &quot;weighted(active_workspaces, expansion_pipeline, net_revenue_retention)&quot;,
+      &quot;maintainer&quot;: {
+        &quot;@type&quot;: &quot;Organization&quot;,
+        &quot;name&quot;: &quot;Customer Success&quot;
+      },
+      &quot;variableMeasured&quot;: [
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;active_workspaces&quot;,
+          &quot;description&quot;: &quot;Dependency required for Expansion Readiness Score&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;expansion_pipeline&quot;,
+          &quot;description&quot;: &quot;Dependency required for Expansion Readiness Score&quot;
+        },
+        {
+          &quot;@type&quot;: &quot;PropertyValue&quot;,
+          &quot;name&quot;: &quot;net_revenue_retention&quot;,
+          &quot;description&quot;: &quot;Dependency required for Expansion Readiness Score&quot;
+        }
+      ]
+    }
+  ]
+}</pre></div>
+      <div class="json"><pre>{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;DefinedTerm&quot;,
+  &quot;name&quot;: &quot;Customer Acquisition Cost&quot;,
+  &quot;termCode&quot;: &quot;customer_acquisition_cost&quot;,
+  &quot;description&quot;: &quot;Average spend required to acquire a new paying account.&quot;,
+  &quot;alternateName&quot;: &quot;spend / acquired_accounts&quot;,
+  &quot;inDefinedTermSet&quot;: &quot;http://127.0.0.1:4604/semantic/catalog.jsonld&quot;,
+  &quot;keywords&quot;: [
+    &quot;cac&quot;,
+    &quot;efficiency&quot;,
+    &quot;finance&quot;
+  ],
+  &quot;measurementTechnique&quot;: &quot;spend / acquired_accounts&quot;,
+  &quot;maintainer&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;Revenue Strategy&quot;
+  },
+  &quot;variableMeasured&quot;: [
+    {
+      &quot;@type&quot;: &quot;PropertyValue&quot;,
+      &quot;name&quot;: &quot;spend&quot;,
+      &quot;description&quot;: &quot;Dependency required for Customer Acquisition Cost&quot;
+    },
+    {
+      &quot;@type&quot;: &quot;PropertyValue&quot;,
+      &quot;name&quot;: &quot;acquired_accounts&quot;,
+      &quot;description&quot;: &quot;Dependency required for Customer Acquisition Cost&quot;
+    }
+  ]
+}</pre></div>
+    
+    </div>
+  </div>
+</body>
+</html>
