@@ -41,7 +41,7 @@ dashboard screenshots and half-remembered wiki pages.
 ## Local Run
 
 ```powershell
-Set-Location "C:\Users\chaus\dev\repos\analytics-semantic-layer-publisher"
+cd analytics-semantic-layer-publisher
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m app.main
@@ -64,7 +64,7 @@ $env:PORT = "4608"
 ## Validation
 
 ```powershell
-Set-Location "C:\Users\chaus\dev\repos\analytics-semantic-layer-publisher"
+cd analytics-semantic-layer-publisher
 .\.venv\Scripts\python.exe -m unittest discover -s tests
 .\.venv\Scripts\python.exe scripts\run_demo.py
 .\.venv\Scripts\python.exe scripts\smoke_check.py
